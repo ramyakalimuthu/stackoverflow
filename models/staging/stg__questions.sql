@@ -8,7 +8,7 @@
     batch_size='day'
   )
 }}
-select * from {{ source('posts_questions', 'posts_questions') }}
+select * from {{ source('stackoverflow', 'posts_questions') }}
 {% if is_incremental() %}
 where
 last_activity_date >= (select max(last_activity_date) from {{this}})
