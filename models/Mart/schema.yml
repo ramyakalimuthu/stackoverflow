@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: question_insights
+    description: "Final enriched Stack Overflow questions"
+    columns:
+      - name: question_id
+        tests: [not_null, unique]
+      - name: post_quality
+        tests:
+          - accepted_values:
+              values: ['High Quality', 'Medium Quality', 'Low Quality']
+      - name: major_tag
+        tests:
+          - accepted_values:
+              values: ['Python', 'JavaScript', 'SQL', 'Other']

@@ -1,0 +1,5 @@
+models:
+  - name: questions_per_day
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "row_count > 100"
