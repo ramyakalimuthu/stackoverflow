@@ -1,5 +1,12 @@
+version: 2
+
 models:
   - name: questions_per_day
     tests:
       - dbt_utils.expression_is_true:
           expression: "row_count > 100"
+  - name: base_questions
+    columns:
+      - name: id
+        tests: [not_null, unique]
+
