@@ -10,15 +10,18 @@ FROM
 --    {{ ref('stg__questions') }}
     {{ source('stackoverflow', 'posts_questions') }} q
 LEFT JOIN
-    {{ source('stackoverflow', 'users') }} u
+    {{ ref('base_users') }}
+--    {{ source('stackoverflow', 'users') }} u
 ON
  q.owner_user_id = u.id
 LEFT JOIN
-    {{ source('stackoverflow', 'posts_answers') }} a
+    {{ ref('base_answers') }}
+--    {{ source('stackoverflow', 'posts_answers') }} a
 ON
  a.parent_id = q.id
 LEFT JOIN
-    {{ source('stackoverflow', 'votes') }} v
+    {{ ref('base_votes') }}
+--     {{ source('stackoverflow', 'votes') }} v
 ON
  v.post_id = q.id
 WHERE
