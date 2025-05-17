@@ -4,7 +4,7 @@ models:
   - name: question_insights
     description: "Final enriched Stack Overflow questions"
     columns:
-      - name: question_id
+      - name: id
         tests: [not_null, unique]
       - name: post_quality
         tests:

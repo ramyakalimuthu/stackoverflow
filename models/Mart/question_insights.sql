@@ -1,5 +1,17 @@
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    partition_by = {
+      "field": "question_creation_dt",
+      "data_type": "DATE"
+    }
+  )
+}}
+
 SELECT
   *,
+  DATE(creation_date) question_creation_dt,
   -- Derived fields
   DATE_DIFF(CURRENT_DATE(), DATE(creation_date), DAY) AS question_age_days,
   upvotes - downvotes AS net_votes,
